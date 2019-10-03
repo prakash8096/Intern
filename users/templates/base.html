@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="navsection">
+        <nav class="navbar navbar-default navbar-inverse" style="background-color: #303952">
+                <div class="container-fluid">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle='collapse' data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="navbar-collapse collapse">
+                
+                {% if user.is_authenticated %}
+                <div class="nav navbar-nav">
+                    
+                        <li><a href="{% url 'home'%}">Home</a></li>
+
+                    </div>
+
+                <div class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'create' %}">New Post</a></li>
+                        <li><a href="{% url 'profile' %}">Profile</a></li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    </div>
+                    
+                    
+                    {% else %}
+                    <div class="nav navbar-nav navbar-right">
+
+                        <li><a href="{% url 'register' %}">Register</a></li>
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                    </div>
+                     
+                   
+                
+                {% endif %}
+            </div>
+           
+                   
+            
+        </nav>
+</div>
+
+        
+    </div>
+
+    <div class="container" style="margin-bottom: 10px;">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                {% if messages%}
+                {% for message in messages %}
+                <div class="alert-{{message.tags}}">
+                    {{message}}
+
+                </div>
+                {% endfor %}
+                {% endif%}
+            </div>
+        </div>
+    </div>
+
+
+    {% block content %}
+    
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+	<script>
+	</script>    
+</body>
+</html>

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="well">
+                <div class="media" style="margin-bottom: 3px;" >
+                    <div class="media-left" >
+                            <img src="{{ user.profile.image.url}}" alt="" height="100px"  width="100px" class="img-circle media-object">
+                        
+                    </div>
+                    
+                    <div class="media-body">
+                            <h2 class="media-heading">{{user.username}}</h2>
+                            <p>{{user.email}}</p>
+
+                    </div>
+                </div>
+                <form action="" method="POST" enctype="multipart/form-data" style="border-top: 1px solid silver;">
+                    {% csrf_token %}
+                    {{u_form|crispy}}
+                    {{p_form|crispy}}
+                    <input type="submit" value="Submit" >
+
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+
+
+                

@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+
+{% block content%}
+
+<div class="container">
+    <div class="row">
+       
+        <div class="col-md-8 col-md-offset-2">
+            <div class="well">
+                    <div class="media">
+                            <div class="media-left">
+                                    <img src="{{ user.profile.image.url}}" alt="" height="80px"  width="80px" class="img-circle media-object">
+                                
+                            </div>
+                            <div class="media-body">
+                                    <h4  class="media-heading" style="border-bottom: 1px solid silver;"><a href="{% url 'profile' %}" style="text-decoration: none;">{{batman.author.username}}</a><i style="padding:4px;"><small class="text-muted">{{batman.date_posted}}</small></i></h4>
+
+                                    <h2 class="media-heading">{{batman.Title}}</h2>
+                                    <p>{{batman.Text}}</p>
+        
+                            </div>
+                        </div><hr>
+
+                        {% if batman.author == user %}
+                        <a href="{% url 'update' batman.pk %}" class="btn btn-primary">Edit Post</a>
+                        <a href="{% url 'delete' batman.pk %}" class="btn btn-danger">Delete Post</a>
+                        {% endif %}
+
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+{% endblock %}
